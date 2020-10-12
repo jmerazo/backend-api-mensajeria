@@ -23,6 +23,7 @@ class Evidencia(models.Model):
      verbose_name = "Evidencia"
      verbose_name_plural = "Evidencias" 
    nombre = models.CharField(max_length=255)
+   apellido = models.CharField(max_length=255)
    logo = models.ImageField(upload_to='cars')
    campo_res = models.CharField(max_length=255,null=True)
   
