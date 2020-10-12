@@ -61,3 +61,4 @@ class Terceros(models.Model):
     return self.nombre_tercero
 
 # Create your models here.
+# Create your models here -  EJEMPLO DE DESCARGAR
