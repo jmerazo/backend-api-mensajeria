@@ -59,3 +59,5 @@ class Terceros(models.Model):
   evidencia_id = models.ForeignKey(Evidencia, null=True, blank= True, on_delete=models.RESTRICT)
   def __str__(self):
     return self.nombre_tercero
+
+# Create your models here.
