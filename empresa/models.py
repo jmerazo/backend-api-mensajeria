@@ -10,7 +10,6 @@ class Historial(models.Model):
   
    def __str__(self):
     return self.historial
-
 class Estado(models.Model):
 
    nombre = models.CharField(max_length=255)
@@ -23,12 +22,18 @@ class Evidencia(models.Model):
      verbose_name = "Evidencia"
      verbose_name_plural = "Evidencias" 
    nombre = models.CharField(max_length=255)
-   #apellidosusuario = models.CharField(max_length=255) 
    logo = models.ImageField(upload_to='cars')
    campo_res = models.CharField(max_length=255,null=True)
   
    def __str__(self):
-    return self.nombre    
+    return self.nombre 
+class TipoServicio(models.Model):
+
+   nombre = models.CharField(max_length=255)
+   campo_res = models.CharField(max_length=255,null=True)
+  
+   def __str__(self):
+    return self.nombre   
 class Empresa(models.Model):
 
    nombre = models.CharField(max_length=255)
@@ -49,7 +54,7 @@ class Terceros(models.Model):
     
   guia_numero = models.IntegerField()
   nombre_tercero = models.TextField(null=True)
-  tipo_servicio = models.TextField(null=True)
+  tipo_servicio = models.ForeignKey(TipoServicio, null=True, blank= True, on_delete=models.RESTRICT)
   ciudad_tercero = models.TextField(null=True)
   fecha_estado = models.DateField(max_length=255,null=True)
   fecha_ingreso = models.DateField(max_length=255,null=True)
@@ -62,4 +67,3 @@ class Terceros(models.Model):
     return self.nombre_tercero
 
 # Create your models here.
-# Create your models here -  EJEMPLO DE DESCARGAR
