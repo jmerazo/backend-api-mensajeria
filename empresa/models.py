@@ -1,7 +1,12 @@
 from django.db import models
-
+from django.contrib.auth.models import User
 # Create your models here.
-class Historial(models.Model):
+class AuthUser(models.Model):
+   usuario = models.ForeignKey(User, on_delete=models.CASCADE)   
+   class Meta:  
+     abstract = True     
+
+class Historial(AuthUser):
    class Meta:  
      verbose_name = "Historial"
      verbose_name_plural = "Historiales" 
@@ -10,14 +15,14 @@ class Historial(models.Model):
   
    def __str__(self):
     return self.historial
-class Estado(models.Model):
+class Estado(AuthUser):
 
    nombre = models.CharField(max_length=255)
    campo_res = models.CharField(max_length=255,null=True)
   
    def __str__(self):
     return self.nombre
-class Evidencia(models.Model):
+class Evidencia(AuthUser):
    class Meta:  
      verbose_name = "Evidencia"
      verbose_name_plural = "Evidencias" 
@@ -27,14 +32,14 @@ class Evidencia(models.Model):
   
    def __str__(self):
     return self.nombre 
-class TipoServicio(models.Model):
+class TipoServicio(AuthUser):
 
    nombre = models.CharField(max_length=255)
    campo_res = models.CharField(max_length=255,null=True)
   
    def __str__(self):
     return self.nombre   
-class Empresa(models.Model):
+class Empresa(AuthUser):
 
    nombre = models.CharField(max_length=255)
    razon_social = models.CharField(max_length=255)
@@ -47,7 +52,7 @@ class Empresa(models.Model):
   
    def __str__(self):
     return self.nombre    
-class Terceros(models.Model):
+class Terceros(AuthUser):
   class Meta:
     verbose_name = "Tercero"
     verbose_name_plural = "Terceros"
@@ -66,4 +71,4 @@ class Terceros(models.Model):
   def __str__(self):
     return self.nombre_tercero
 
-# Create your models here.
+
