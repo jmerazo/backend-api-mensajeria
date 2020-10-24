@@ -5,7 +5,6 @@ class AuthUser(models.Model):
    usuario = models.ForeignKey(User, on_delete=models.CASCADE)   
    class Meta:  
      abstract = True     
-
 class Historial(AuthUser):
    class Meta:  
      verbose_name = "Historial"
